@@ -1,0 +1,118 @@
+body {
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* background-color: #f0f0f0; */
+}
+
+.container {
+    
+    justify-content: space-around;
+    width: 100%;
+}
+
+@font-face {
+    font-family: 'LightBeach';
+    src: url('../fonts/LightBeach.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-family: 'LightBeach', sans-serif;
+    font-size: 72px;
+    color: #D4E6FC;
+    align-self: flex-start;
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bg {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../img/sky.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+}
+
+.island {
+    width: 58vw;
+    height: 32.7vw;
+    background-image: url('../img/palm_island.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.pineapple {
+    width: 4%;
+    background-image: url('../img/pineapple.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 35%;
+    left: 60%;
+    height: 9999px;
+    z-index: 999999;
+}
+
+.boat {
+    width: 20vw;
+    height:20vw;
+    background-image: url('../img/boat.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.water {
+    background-color: blue;
+    z-index: 99;
+    opacity: 0.4;
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+}
+
+.god {
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    z-index: 3;
+    position: relative;
+    /* margin-top: 100vh; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    pointer-events: none;
+  }
+
+  .content {
+    max-width: 1200px;
+    opacity: 0;
+  }
