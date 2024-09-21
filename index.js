@@ -9,7 +9,7 @@ const timeline = gsap.timeline({
   scrollTrigger: {
     trigger: "body",
     start: "top top",
-    end: "+=1000",
+    end: "+=10000",
     scrub: true,
     pin: true, // Pin the scene in place
     anticipatePin: 1,
@@ -33,7 +33,12 @@ timeline.to(".boat", {
 
 // Make the pineapple fall and bounce off the boat
 timeline.to(".pineapple", {
-  y: "15vw", // Drop it down from the tree
+    y: () => {
+        const island = document.querySelector('.island');
+        const islandHeight = island.getBoundingClientRect().height;
+
+        return islandHeight * 0.52;
+      },
   ease: "bounce.out",
   duration: 3,
 }, "-=1"); // Start the pineapple falling just before the boat reaches it
@@ -46,7 +51,6 @@ timeline.to(".boat", {
   ease: "power1.in",
 });
 
-
 timeline.to(".pineapple", {
     y: "47vh", // Pineapple falling
     // rotation: 40, // Same tilt effect
@@ -54,6 +58,10 @@ timeline.to(".pineapple", {
     ease: "power1.in",
   }, "-=3.6"); // Start this animation 3.6 seconds earlier (synchronously with the boat)
 
+
+  timeline.to({}, {
+    duration: 2, // Adjust this duration to control how much scroll is required after the sinking finishes
+  });
 
 timeline.to(".bg", {
     opacity: 0,
@@ -69,7 +77,7 @@ function fadeToContent() {
     gsap.to(".bg", { opacity: 0, duration: 1 }); // Fade out the animation scene
     gsap.to(".god", { opacity: 1, duration: 1 }); // Fade in the content
     gsap.to(".bg", {display: `none`})
-    gsap.to(".god", { pointerEvents: `all` }); // Fade in the content
+    // gsap.to(".god", { pointerEvents: `all` }); // Fade in the content
 
   }
   
@@ -77,7 +85,7 @@ function fadeToContent() {
   function resetContent() {
     gsap.to(".bg", {display: `flex`})
     gsap.to(".bg", { opacity: 1, duration: 1 }); // Fade the animation back in
-    gsap.to(".god", { pointerEvents: `none` }); // Fade in the content
+    // gsap.to(".god", { pointerEvents: `none` }); // Fade in the content
     gsap.to(".god", { opacity: 0, duration: 1 }); // Fade out the content
   }
 
@@ -104,4 +112,5 @@ function fadeToContent() {
     pineapple.style.position = 'absolute';
     pineapple.style.top = `${pineappleTop}px`;
     pineapple.style.left = `${pineappleLeft}px`;
+    pineapple.style.display = `block`;
   }
